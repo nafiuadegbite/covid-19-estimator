@@ -23,20 +23,26 @@ const covid19ImpactEstimator = (data) => {
   const impactCurrentlyInfected = reportedCases * 10;
   const impactInfectionsByRequestedTime = impactCurrentlyInfected * 2 ** factor;
   const casesByRequestedTime = Math.flor(impactInfectionsByRequestedTime * 0.15);
-  const impactHospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35 - casesByRequestedTime);
+  const impactHospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35
+     - casesByRequestedTime);
   const impactCasesForICUByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.05);
-  const impactCasesForVentilatorsByRequestedTime = Math.floor(impactInfectionsByRequestedTime * 0.02);
-  const impactDollarsInFlight = Math.floor(impactInfectionsByRequestedTime * region.avgDailyIncomePopulation
+  const impactCasesForVentilatorsByRequestedTime = Math.floor(impactInfectionsByRequestedTime
+     * 0.02);
+  const impactDollarsInFlight = Math.floor(impactInfectionsByRequestedTime
+     * region.avgDailyIncomePopulation
   * region.avgDailyIncomeInUSD * period);
 
   // severe impact estimations
   const severeImpactCurrentlyInfected = reportedCases * 50;
   const severeImpactInfectionsByRequestedTime = severeImpactCurrentlyInfected * 2 ** factor;
   const severeCasesByRequestedTime = Math.floor(severeImpactInfectionsByRequestedTime * 0.15);
-  const hospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35 - severeCasesByRequestedTime);
+  const hospitalBedsByRequestedTime = Math.floor(totalHospitalBeds * 0.35
+     - severeCasesByRequestedTime);
   const casesForICUByRequestedTime = Math.floor(severeImpactInfectionsByRequestedTime * 0.05);
-  const casesForVentilatorsByRequestedTime = Math.floor(severeImpactInfectionsByRequestedTime * 0.02);
-  const dollarsInFlight = Math.floor(severeImpactInfectionsByRequestedTime * region.avgDailyIncomePopulation
+  const casesForVentilatorsByRequestedTime = Math.floor(severeImpactInfectionsByRequestedTime
+     * 0.02);
+  const dollarsInFlight = Math.floor(severeImpactInfectionsByRequestedTime
+     * region.avgDailyIncomePopulation
   * region.avgDailyIncomeInUSD * period);
 
   const impact = {
